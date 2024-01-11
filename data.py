@@ -65,6 +65,9 @@ dolasci = {
     "15:00":""
 }
 
+
+br = dolasci.copy()
+
 for timestamp in dolasci:
     _timeArray = []
     for x in range(random.randrange(MIN_ARRIVAL,MAX_ARRIVAL)): 
@@ -77,9 +80,14 @@ for timestamp in dolasci:
         
         _timestamp = minute + ':' + seconds
         _timeArray.append(_timestamp)
+    br[timestamp] = len(_timeArray)
     dolasci[timestamp] = sorted(_timeArray)
 
 with open('data.json', 'w') as f:
     json.dump(dolasci, f)
 
-print(dolasci)
+with open('arrivals.json', 'w') as f:
+    json.dump(br, f)
+
+# print(dolasci)
+# print(br)
